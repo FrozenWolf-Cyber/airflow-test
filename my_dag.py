@@ -2,10 +2,12 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
 from datetime import datetime
 
-with DAG("hello_kube",
-         start_date=datetime(2023,1,1),
-         schedule_interval=None,
-         catchup=False) as dag:
+with DAG(
+    "hello_kube",
+    start_date=datetime(2023, 1, 1),
+    schedule=None,
+    catchup=False,
+) as dag:
 
     task = KubernetesPodOperator(
         namespace="default",
